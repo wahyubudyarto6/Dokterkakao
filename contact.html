@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak Dokter Kakao</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="Logo Dokter Kakao">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="about.html">Tentang</a></li>
+            <li><a href="contact.html">Kontak</a></li>
+        </ul>
+        <div class="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    <section class="contact-section">
+        <h1 class="section-title">Contact Us</h1>
+        
+        <div class="contact-cards">
+            <div class="contact-card">
+                <i class="fas fa-envelope contact-icon"></i>
+                <span>wahyubudyarto493@gmail.contact-form</span>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-phone contact-icon"></i>
+                <span>089512450847</span>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-map-marker-alt contact-icon"></i>
+                <span>Your Address</span>
+            </div>
+        </div>
+    
+       <!-- Form dengan dua tombol -->
+<form class="contact-form">
+    <div class="form-group">
+        <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+    </div>
+    <div class="form-group">
+        <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+    </div>
+    <div class="form-group">
+        <textarea id="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+    </div>
+    <div class="button-group">
+        <button type="button" class="btn-submit" onclick="sendToWhatsApp()">
+            <i class="fab fa-whatsapp"></i> Kirim via WhatsApp
+        </button>
+        <button type="button" onclick="sendToEmail()" class="btn-submit">
+            <i class="far fa-envelope"></i> Send to Email
+        </button>
+    </div>
+</form>
+
+<script>
+    function sendToWhatsApp() {
+        const nama = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const pesan = document.getElementById('message').value;
+        // Format nomor WhatsApp: hilangkan angka 0 di depan dan tambahkan 62
+        const adminNumber = '6289512450847'; // Hapus satu angka 4 yang berlebih
+        const message = `Halo, saya ${nama}\nEmail: ${email}\nPesan: ${pesan}`;
+        const encodedMessage = encodeURIComponent(message);
+        // Gunakan format URL yang benar
+        const whatsappURL = `https://api.whatsapp.com/send?phone=${adminNumber}&text=${encodedMessage}`;
+        window.open(whatsappURL, '_blank');
+    }
+    </script>
+
+<style>
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-submit {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-submit i {
+    font-size: 1.2rem;
+}
+
+</style>
+    <main>
+        <h1>Hubungi Kami</h1>
+        <p>Jika Anda memiliki pertanyaan, jangan ragu untuk menghubungi tim Dokter Kakao!</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Dokter Kakao. Hak cipta dilindungi undang-undang.</p>
+    </footer>
+
+    <script src="js/navbar.js"></script>
+</body>
+</html>
